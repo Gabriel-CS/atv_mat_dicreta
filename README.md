@@ -1,5 +1,10 @@
-### **Universidade Federal de Sergipe**
+#### **Universidade Federal de Sergipe**
 
+### Professor: Gastão Florêncio Miranda Junior
+
+## Alunos: Gabriel Carvalho, Phelipe Melo, Jenifer Stefany
+
+# Sobre o Projeto
 ● **Corretor Ortográfico**
 
 Este projeto foi desenvolvido como parte das atividades acadêmicas avaliativas da disciplina de Matemática Discreta, ministrada pelo professor Gastão Florêncio Miranda Junior. O objetivo desta atividade é implementar um corretor ortográfico utilizando três diferentes medidas de distância entre palavras. O projeto será avaliado com base na correta implementação dos algoritmos e na análise crítica dos resultados obtidos. O banco de palavras utilizado está contido no arquivo br-sem-acentos.txt, o qual contém palavras com letras maiúsculas e sem acentuação.
