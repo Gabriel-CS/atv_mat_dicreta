@@ -21,4 +21,4 @@ Com o intuito de avaliar o desempenho de cada métrica, foram realizadas compara
 **Resultados**
 Os resultados incluem uma análise detalhada da eficiência de cada uma das três distâncias na tarefa de correção ortográfica. O desempenho foi avaliado em termos da qualidade das sugestões oferecidas, assim como da precisão de cada abordagem.
 
-Os resultados e a análise comparativa podem ser encontrados em um relatório que apresenta as observações obtidas em cada experimento realizado.
+**EM DESENVOLVIMENTO**
