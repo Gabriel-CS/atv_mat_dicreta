@@ -1,0 +1,5 @@
+Distância de Levenshtein (ou Distância de edição) = 
+
+Distância Euclidiana: d(a,b) = sqrt((a1 - b1)**2 + (a2 - b2)**2 + ... + (an - bn)**2)
+
+Distância Ângular = 
