@@ -1,4 +1,4 @@
-**##Universidade Federal de Sergipe**
+##**Universidade Federal de Sergipe**##
 
 ● **Corretor Ortográfico**
 
