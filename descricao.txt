@@ -1,5 +1,5 @@
-Distância de Levenshtein (ou Distância de edição) = 
+Distância de Levenshtein (ou Distância de edição) = dist(a,b) = nº de operações para consverter a em b
 
-Distância Euclidiana: d(a,b) = sqrt((a1 - b1)**2 + (a2 - b2)**2 + ... + (an - bn)**2)
+Distância Euclidiana: dist(a,b) = sqrt((a1 - b1)**2 + (a2 - b2)**2 + ... + (an - bn)**2)
 
-Distância Ângular = 
+Distância Ângular = dist(a,b) = cos^-1(⟨a,b⟩) ou arcos(⟨a,b⟩)

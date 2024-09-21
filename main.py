@@ -3,10 +3,11 @@ import numpy as np
 
 def Ajustar_tam(palavra1, palavra2):
     # Ajusta os tamanhos das palavras pelo comprimento, não pela comparação direta de strings
-    if len(palavra1) > len(palavra2):
-        palavra2 = palavra2.ljust(len(palavra1))
-    elif len(palavra2) > len(palavra1):
-        palavra1 = palavra1.ljust(len(palavra2))
+    tam_p1, tam_p2 = len(palavra1), len(palavra2)
+    if tam_p1 > tam_p2:
+        palavra2 = palavra2.ljust(tam_p1)
+    elif tam_p2 > tam_p1:
+        palavra1 = palavra1.ljust(tam_p2)
     
     return palavra1, palavra2
 
@@ -31,9 +32,9 @@ def Distancia_Euclidiana(palavra1, palavra2):
     palavra1 = [ 0 if ord(i) == 32 else ord(i) for i in list(palavra1) ]
     palavra2 = [ 0 if ord(i) == 32 else ord(i) for i in list(palavra2) ]
 
-    dist_euclid = sqrt(sum((i - j)**2 for i, j in zip(palavra1, palavra2)))
+    dist_euclidiana = sqrt(sum((i - j)**2 for i, j in zip(palavra1, palavra2)))
 
-    return dist_euclid
+    return dist_euclidiana
 
 def Distancia_Angular(palavra1, palavra2):
     palavra1, palavra2 = Ajustar_tam(palavra1, palavra2) # Ajusta o tamanho das palavras
