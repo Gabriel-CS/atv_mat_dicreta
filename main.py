@@ -54,8 +54,32 @@ def Distancia_Angular(palavra1, palavra2):
 
     return np.arccos(cos) # Esse resultado é dado em radianos
 
+def Busca_Binaria(lista, letra):
+    tam = len(lista)
+
+    if tam == 0:
+        return -1
+    
+    meio = tam // 2
+
+    if letra == lista[meio]:
+        return meio
+
+    elif letra < lista[meio]: # Busca na parte esquerda do array
+        return Busca_Binaria(lista[:meio], letra)
+
+    else:
+        resultado = Busca_Binaria(lista[meio:], letra) # Busca na parte direita 
+
+        if resultado != -1:
+            return meio + resultado
+        else:
+            return -1
+
+
 if  __name__ == '__main__':
-    palavras = ['gato', 'cachorro']
-    print(f'Distância de Levenshtein (ou distância de edição) : {Distancia_Levenshtein(palavras[0], len(palavras[0]), palavras[1], len(palavras[1]))}')
-    print(f'Distância Euclidiana : {Distancia_Euclidiana(palavras[0], palavras[1])}')
-    print(f'Distância Ângular : {Distancia_Angular(palavras[0], palavras[1])}')
+    letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+    letras = list(map(lambda x : ord(x), letras))
+    for letra in letras:
+        print(Busca_Binaria(letras, letra))
