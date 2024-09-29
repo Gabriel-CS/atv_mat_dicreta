@@ -3,7 +3,7 @@ import numpy as np
 
 teclas = [
     ["q", "_", "w", "_", "e", "_", "r", "_", "t", "_", "y", "_", "u", "_", "i", "_", "o", "_", "p", "_"],
-    ["_", "a", "_", "s", "_", "d", "_", "f", "_", "g", "_", "h_", "_", "j", "_", "k", "_", "l", "_", "ç"],
+    ["_", "a", "_", "s", "_", "d", "_", "f", "_", "g", "_", "h", "_", "j", "_", "k", "_", "l", "_", "ç"],
     ["_", "_", "z", "_", "x", "_", "c", "_", "v", "_", "b", "_", "n", "_", "m", "_", "_", "_", "_", "_"],
 ]
 
@@ -49,7 +49,7 @@ def Distancia_Levenshtein(palavra1, palavra2):
     for j in range(1, tam_p2 + 1):
         T[0][j] = j                    # (caso 1)
 
-    # preenche a tabela de pesquisa de baixo para cima
+    # preenche a tabela de pesquisa de forma baipalavra1o para cima
     for i in range(1, tam_p1 + 1):
 
         for j in range(1, tam_p2 + 1):
