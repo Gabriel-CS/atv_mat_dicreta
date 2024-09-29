@@ -49,7 +49,7 @@ def Distancia_Levenshtein(palavra1, palavra2):
     for j in range(1, tam_p2 + 1):
         T[0][j] = j                    # (caso 1)
 
-    # preenche a tabela de pesquisa de forma baipalavra1o para cima
+    # preenche a tabela de pesquisa de baixo para cima
     for i in range(1, tam_p1 + 1):
 
         for j in range(1, tam_p2 + 1):
