@@ -94,24 +94,24 @@ def Distancia_Angular(palavra1, palavra2):
 
     return np.arccos(cos) # Esse resultado é dado em radianos
 
-def Busca_Binaria(lista, letra):
-    tam = len(lista)
+# def Busca_Binaria(lista, letra):
+#     tam = len(lista)
 
-    if tam == 0:
-        return -1
+#     if tam == 0:
+#         return -1
     
-    meio = tam // 2
+#     meio = tam // 2
 
-    if letra == lista[meio]:
-        return meio
+#     if letra == lista[meio]:
+#         return meio
 
-    elif letra < lista[meio]: # Busca na parte esquerda do array
-        return Busca_Binaria(lista[:meio], letra)
+#     elif letra < lista[meio]: # Busca na parte esquerda do array
+#         return Busca_Binaria(lista[:meio], letra)
 
-    else:
-        resultado = Busca_Binaria(lista[meio:], letra) # Busca na parte direita 
+#     else:
+#         resultado = Busca_Binaria(lista[meio:], letra) # Busca na parte direita 
 
-        if resultado != -1:
-            return meio + resultado
-        else:
-            return -1
+#         if resultado != -1:
+#             return meio + resultado
+#         else:
+#             return -1
