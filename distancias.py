@@ -36,18 +36,33 @@ def Ajustar_tam(palavra1, palavra2):
     
     return palavra1, palavra2
 
-def Distancia_Levenshtein(p1, tam_p1, p2, tam_p2):
-    if tam_p1 == 0:      # Caso base: strings vazias (caso 1)
-        return tam_p2
-    if tam_p2 == 0:      # se os últimos caracteres das strings corresponderem (caso 2)
-        return tam_p2
+def Distancia_Levenshtein(palavra1, palavra2):
+    # `tam_1` e `tam_2` é o número total de caracteres em `palavra1` e `palavra2`, respectivamente
+    (tam_p1, tam_p2) = (len(palavra1), len(palavra2))
 
-    custo = 0 if (p1[tam_p1 - 1] == p2[tam_p2 - 1]) else 1
+    T = [[0 for x in range(tam_p2 + 1)] for y in range(tam_p1 + 1)]
 
-    minimo = min(Distancia_Levenshtein(p1, tam_p1 - 1, p2, tam_p2) + 1,         # Deleção de # (caso 3a))
-                 Distancia_Levenshtein(p1, tam_p1, p2, tam_p2 - 1) + 1,         # Inserção de # (caso 3b))
-                 Distancia_Levenshtein(p1, tam_p1 - 1, p2, tam_p2 - 1) + custo)
-    return minimo
+    for i in range(1, tam_p1 + 1):
+        T[i][0] = i                    # (caso 1)
+
+    # inserindo todos os caracteres
+    for j in range(1, tam_p2 + 1):
+        T[0][j] = j                    # (caso 1)
+
+    # preenche a tabela de pesquisa de forma baipalavra1o para cima
+    for i in range(1, tam_p1 + 1):
+
+        for j in range(1, tam_p2 + 1):
+            if palavra1[i - 1] == palavra2[j - 1]:             # (caso 2)
+                custo = 0                        # (caso 2)
+            else:
+                custo = 1                        # (caso 3c)
+
+            T[i][j] = min(T[i - 1][j] + 1,       # Deleção de # (caso 3b)
+                        T[i][j - 1] + 1,         # Inserção de # (caso 3a)
+                        T[i - 1][j - 1] + custo) # substituir (caso 2 + 3c)
+
+    return T[tam_p1][tam_p2]
 
 def Distancia_Euclidiana(palavra1, palavra2):
     palavra1, palavra2 = Ajustar_tam(palavra1, palavra2)    # adicionando espaços nas palavras com menor tamanho
