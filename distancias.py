@@ -1,6 +1,31 @@
 from math import sqrt
 import numpy as np
 
+teclas = [
+    ["q", "_", "w", "_", "e", "_", "r", "_", "t", "_", "y", "_", "u", "_", "i", "_", "o", "_", "p", "_"],
+    ["_", "a", "_", "s", "_", "d", "_", "f", "_", "g", "_", "h_", "_", "j", "_", "k", "_", "l", "_", "ç"],
+    ["_", "_", "z", "_", "x", "_", "c", "_", "v", "_", "b", "_", "n", "_", "m", "_", "_", "_", "_", "_"],
+]
+
+def teclasProximas(key):
+    for i, linha in enumerate(teclas):
+        if key in linha:
+            j = linha.index(key)
+            break
+    else:
+        return []
+    vizinhos = [
+        (i-1, j-1), (i-1, j), (i-1, j+1),
+        (i, j-2), (i, j+2),
+        (i+1, j-1), (i+1, j), (i+1, j+1)
+    ]
+    teclas_proximas = []
+    for vi, vj in vizinhos:
+        if 0 <= vi < len(teclas) and 0 <= vj < len(teclas[vi]) and teclas[vi][vj] != "_":
+            teclas_proximas.append(teclas[vi][vj])
+    return teclas_proximas
+
+
 def Ajustar_tam(palavra1, palavra2):
     # Ajusta os tamanhos das palavras pelo comprimento, não pela comparação direta de strings
     tam_p1, tam_p2 = len(palavra1), len(palavra2)
