@@ -39,13 +39,13 @@ def busca_palavras(dicionario, prefixo, palavra_original, invertido, limite=5):
             i += 1
             continue
         distLev = Distancia_Levenshtein(palavra_original, palavra)
-        if invertido:
-            distEuc = Distancia_Euclidiana(palavra_original[::-1], palavra[::-1])
-            distAng = Distancia_Angular(palavra_original[::-1], palavra[::-1])
-        else:
-            distEuc = Distancia_Euclidiana(palavra_original, palavra)
-            distAng = Distancia_Angular(palavra_original, palavra)
         if distLev < 5:
+            if invertido:
+                distEuc = Distancia_Euclidiana(palavra_original[::-1], palavra[::-1])
+                distAng = Distancia_Angular(palavra_original[::-1], palavra[::-1])
+            else:
+                distEuc = Distancia_Euclidiana(palavra_original, palavra)
+                distAng = Distancia_Angular(palavra_original, palavra)
             dados = {"nome": palavra, "distLev": distLev, "distEuc": distEuc, "distAng": distAng}
             if len(lista) < limite:
                 lista.append(dados)
@@ -57,20 +57,23 @@ def busca_palavras(dicionario, prefixo, palavra_original, invertido, limite=5):
         i += 1
     return lista
 
-def main(dicionario, dicionario_inv, palavra, original, lista):
+def main(dicionario, dicionario_inv, palavra, original, lista=[]):
     # Buscar no dicionário normal
     prefixo = palavra[:len(palavra) // 2]
     resultado_normal = busca_palavras(dicionario, prefixo, original, False)
+    
     # Buscar no dicionário invertido
     palavra_invertida_original = original[::-1]
     prefixo_invertido = palavra_invertida_original[:len(palavra_invertida_original) // 2]
     resultado_invertido = busca_palavras(dicionario_inv, prefixo_invertido, palavra_invertida_original, True)
     resultado_invertido = [{"nome": item["nome"][::-1], "distLev": item["distLev"], "distEuc": item["distEuc"], "distAng": item["distAng"]} for item in resultado_invertido]
+    
     # Ajustar resultado total
     resultado_total = resultado_normal + resultado_invertido + lista
     resultado_total = remover_duplicadas(resultado_total)
     resultado_total.sort(key=lambda x: x['distLev'])
     resultado_total = resultado_total[:5]
+    
     if len(resultado_total) == 5:
         for v in resultado_total:
             print(f'Palavra: {v["nome"]}, Distância Levenshtein: {v["distLev"]}, Distância Euclidiana: {v["distEuc"]}, Distância Angular: {v["distAng"]}')
@@ -86,10 +89,10 @@ if  __name__ == '__main__':
     with open('palavras-br.txt', 'r', encoding='utf-8') as file:
         dicionario = [palavra.strip() for palavra in file]
     dicionario_inv = sorted(inverter_palavras(dicionario))
-    palavra = input("Defina uma palavra: (Vazio para parar) ")
+    palavra = input("Defina uma palavra: (Vazio para parar) ")..lower()
     while len(palavra) >= 1:
-        main(dicionario, dicionario_inv, palavra, palavra, [])
-        palavra = input("Defina uma palavra: (Vazio para parar) ")
+        main(dicionario, dicionario_inv, palavra, palavra)
+        palavra = input("Defina uma palavra: (Vazio para parar) ").lower()
 
 '''
 palavras = ['gato', 'cachorro']
