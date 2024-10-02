@@ -89,7 +89,7 @@ if  __name__ == '__main__':
     with open('palavras-br.txt', 'r', encoding='utf-8') as file:
         dicionario = [palavra.strip() for palavra in file]
     dicionario_inv = sorted(inverter_palavras(dicionario))
-    palavra = input("Defina uma palavra: (Vazio para parar) ")..lower()
+    palavra = input("Defina uma palavra: (Vazio para parar) ").lower()
     while len(palavra) >= 1:
         main(dicionario, dicionario_inv, palavra, palavra)
         palavra = input("Defina uma palavra: (Vazio para parar) ").lower()
